@@ -1,5 +1,5 @@
 
-class IteneraryController < ApplicationController
+class ItenerariesController < ApplicationController
   def show
     @itenerary = Itenerary.find(params[:id])
   end

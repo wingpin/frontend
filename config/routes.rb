@@ -1,3 +1,4 @@
 Frontend::Application.routes.draw do
-  resource :itenerary
+  root :to => 'root#index'
+  resource :iteneraries
 end
