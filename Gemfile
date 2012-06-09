@@ -35,3 +35,5 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+
+gem "mongoid", "~> 3.0.0.rc"
