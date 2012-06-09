@@ -1,6 +1,7 @@
 class Itenerary
   include Mongoid::Document
   embeds_many :itenerary_legs
+  accepts_nested_attributes_for :itenerary_legs
   validates_length_of :itenerary_legs, :minimum => 1, :message => "must have at least one leg"
 
   field :pin, type: Integer

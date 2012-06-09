@@ -13,13 +13,14 @@ class ItenerariesController < ApplicationController
   end
 
   def new
-    @itenerary = Itenerary.new
+    @itenerary = Itenerary.new(:itenerary_legs => [IteneraryLeg.new])
   end
 
   def create
     @itenerary = Itenerary.new(params[:itenerary])
     if @itenerary.valid?
       @itenerary.save
+      redirect_to itenerary_path(@itenerary.id)
     else
       render :new
     end

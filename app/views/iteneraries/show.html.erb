@@ -1,2 +1,8 @@
-<h1>Itenerary#show</h1>
-<p>Find me in app/views/itenerary/show.html.erb</p>
+<h1>Itenerary</h1>
+<p>Your PIN is <em><%= @itenerary.pin %></em>.</p>
+
+<h2>Flights</h2>
+<%@itenerary.itenerary_legs.each_with_index do |il, idx| %>
+<h3>Leg <%= idx + 1 %></h3>
+<%= il.airline_code %> : <%= il.flight_number %> - <%= il.on %>
+<% end %>
