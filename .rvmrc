@@ -1,1 +1,1 @@
-rvm --create use 1.9.3@wingpin_webapp
+rvm --create use 1.9.3@wingpin_frontend
