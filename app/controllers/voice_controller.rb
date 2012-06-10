@@ -7,10 +7,10 @@ class VoiceController < ApplicationController
   
   def got_pin
     @pin = params[:Digits]
-    @itenerary = Itenerary.find_by(pin: @pin)
-    if @itenerary
+    begin
+      @itenerary = Itenerary.find_by(pin: @pin)
       render :got_pin
-    else
+    rescue Mongoid::Errors::DocumentNotFound
       render :pin_not_found
     end
   end
