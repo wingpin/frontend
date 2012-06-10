@@ -4,4 +4,6 @@ Frontend::Application.routes.draw do
 
   # primary Twilio entrypoint
   match "/voice" => "voice#root"
+  match "/voice/got_pin" => "voice#got_pin", :as => :voice_got_pin
+  
 end

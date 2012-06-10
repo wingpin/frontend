@@ -1,1 +1,2 @@
 res.say "Welcome to wing pin. Please input your pin."
+res.gather :action => voice_got_pin_url, :timeout => 10
