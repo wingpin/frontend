@@ -1,8 +1,17 @@
 <h2>Itenerary</h2>
-<p>Your PIN is <em><%= @itenerary.pin %></em>.</p>
+<p>Your PIN is <em><%= @itenerary.pin %></em>. Your social access code is <em><%= @itenerary.access_code %></em>.</p>
 
-<h2>Flights</h2>
+<h3>Flights</h3>
 <%@itenerary.itenerary_legs.each_with_index do |il, idx| %>
-<h3>Leg <%= idx + 1 %></h3>
+<h4>Leg <%= idx + 1 %></h4>
 <%= il.airline_code %> : <%= il.flight_number %> (<%= il.departing_airport_code %>) - <%= il.on %>
+<% end %>
+
+<h3>Social Updates</h3>
+<p>Connect your social network accounts to your WingPIN itenerary and post updates via phone.</p>
+<h4>via.me</h4>
+<% unless @itenerary.social_accounts.any?{|a| a.account_type == 'via.me'} %>
+<%= link_to_social_account 'Connect with Via.me', 'via.me', @itenerary.id.to_s %>
+<% else %>
+Connected!
 <% end %>

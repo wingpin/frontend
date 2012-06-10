@@ -1,5 +1,5 @@
 <% require 'uri' %>
-<% redis_uri = URI.parse(ENV['REDISTOGO_URL']) %>
+<% redis_uri = URI.parse(ENV.has_key?('REDISTOGO_URL')?ENV['REDISTOGO_URL']:'') %>
 
 defaults: &defaults
   twilio:
@@ -12,6 +12,8 @@ defaults: &defaults
     host: <%= redis_uri.host %>
     port: <%= redis_uri.port %>
     password: <%= redis_uri.password %>
-
+  viame:
+    client_id: <%= ENV['VIAME_CLIENT_ID'] %>
+    client_secret: <%= ENV['VIAME_CLIENT_SECRET'] %>
 production:
   <<: *defaults
