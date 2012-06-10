@@ -44,4 +44,4 @@ gem "twilio-rb"
 
 gem "settingslogic"
 
-gem "iron_worker_ng"
+gem "iron_worker"
