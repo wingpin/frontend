@@ -5,7 +5,6 @@ class RootController < ApplicationController
       format.html do
         redirect_to new_itenerary_path
       end
-      format.voice
     end
   end
 

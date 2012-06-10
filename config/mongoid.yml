@@ -20,6 +20,7 @@ development:
         # to master. (default: :eventual)
         consistency: :strong
 
+<% if ENV['MONGOHQ_URL'] %>
 <% uri = URI.parse(ENV['MONGOHQ_URL']) %>
 production:
   sessions:
@@ -29,3 +30,4 @@ production:
      password: <%= uri.password %>
      hosts:
        - <%= uri.host %>:<%= uri.port %>
+<% end %>
