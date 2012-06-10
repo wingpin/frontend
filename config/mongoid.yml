@@ -8,6 +8,6 @@ production:
   database: <%= uri.path.sub('/','') %>
   username: <%= uri.user %>
   password: <%= uri.password %>
-  hosts: <%= uri.host %>
+  host: <%= uri.host %>
   port: <%= uri.port %>
 <% end %>
