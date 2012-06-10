@@ -9,7 +9,7 @@ elsif flights.last.arrival_date_estimate < Time.now # during my flights
 end
 
 @itenerary.social_accounts.each do |sa|
-  SocialUpdate.delay.post(sa.account_type, viame_oauth_callback_url, sa.token, message_text, :audio_url => @recording_for_via_me)
+  SocialUpdate.post(sa.account_type, viame_oauth_callback_url, sa.token, message_text, :audio_url => @recording_for_via_me)
 end
 
 res.say "Messages queued for delivery. Thank you for using wing pin."
