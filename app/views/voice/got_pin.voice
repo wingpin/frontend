@@ -10,7 +10,7 @@ else
 end
 
 if leg_status[0].departure_date_estimated > Time.now # in the future
-  res.say "Your first flight is estimated to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date_estimated)}, and is scheduled to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date)}.
+  res.say "Your first flight is estimated to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date_estimated)}, and is scheduled to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date)}."
 end
 
 if leg_status[-1].arrival_gate
