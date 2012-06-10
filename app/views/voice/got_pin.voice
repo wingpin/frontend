@@ -1,4 +1,5 @@
 res.say "Thank you. Please wait while we retrieve your status."
+
 leg_status = @itenerary.itenerary_legs.map do |il|
   il.flight
 end
@@ -10,7 +11,7 @@ else
 end
 
 if leg_status[0].departure_date_estimated > Time.now # in the future
-  res.say "Your first flight is estimated to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date_estimated)}, and is scheduled to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date)}."
+  res.say "Your first flight is estimated to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date_estimated)}."
 end
 
 if leg_status[-1].arrival_gate
@@ -21,4 +22,9 @@ end
 
 res.say "Your total estimated travel time is #{distance_of_time_in_words(leg_status[0].departure_date_estimated, leg_status[-1].arrival_date_estimated)}."
 
-res.say "Thank you for using wing pin."
+unless @itenerary.social_accounts.empty?
+  res.say "To post a status update to linked social media accounts, enter your access code followed by the pound key."
+  res.gather :action => voice_create_message_url(:itenerary_id => @itenerary.id), :timeout => 10
+else
+  res.say "Share your trip with your friends, link your social accounts to your wing pin itenerary. Just follow the easy steps presented after creating your iterary via the website or via e-mail. Thank you for using wing pin."
+end

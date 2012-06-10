@@ -54,4 +54,6 @@ gem "redis"
 
 gem "chosen-rails"
 
-gem "chronic"
+gem "oauth2"
+
+gem "typhoeus"

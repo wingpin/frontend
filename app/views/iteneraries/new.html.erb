@@ -3,6 +3,9 @@
   <%= i_form.label :pin, 'PIN' %>
   <%= i_form.text_field :pin %>
   
+  <%= i_form.label :access_code, 'Access code for editing and posting updates' %>
+  <%= i_form.text_field :access_code %>
+  
   <div id="itenerary_legs">
     <%= render :partial => 'itenerary_leg', :locals => { :form => i_form } %>
   </div>

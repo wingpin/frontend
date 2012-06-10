@@ -1,0 +1,15 @@
+flights = @itenerary.itenerary_legs.map{|f| f.flight}
+message_text = "Leaving a messaging about my flight itenerary."
+if flights.first.departure_date_estimated > Time.now # flight is in the future
+  message_text = "My flight itenerary starts in #{distance_of_time_in_words_to_now(flights.first.departure_date_estimated)}. Leaving a message."
+elsif flights.first.departure_date_estimate < Time.now && flights.last.arrival_date_estimate > Time.now # during my flights
+  message_text = "A message while I'm on my way."
+elsif flights.last.arrival_date_estimate < Time.now # during my flights
+  message_text = "I've arrived. Leaving a message."
+end
+
+@itenerary.social_accounts.each do |sa|
+  SocialUpdate.delay.post(sa.account_type, viame_oauth_callback_url, sa.token, message_text, :audio_url => @recording_for_via_me)
+end
+
+res.say "Messages queued for delivery. Thank you for using wing pin."
