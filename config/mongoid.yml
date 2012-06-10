@@ -1,33 +1,13 @@
 development:
-  # Configure available database sessions. (required)
-  sessions:
-    # Defines the default session. (required)
-    default:
-      # Defines the name of the default database that Mongoid can connect to.
-      # (required).
-      database: frontend_development
-      # Provides the hosts the default session can connect to. Must be an array
-      # of host:port pairs. (required)
-      hosts:
-        - localhost:27017
-      options:
-        # Change whether the session persists in safe mode by default.
-        # (default: false)
-        # safe: false
-
-        # Change the default consistency model to :eventual or :strong.
-        # :eventual will send reads to secondaries, :strong sends everything
-        # to master. (default: :eventual)
-        consistency: :strong
+  database: frontend_development
+  host: localhost
 
 <% if ENV['MONGOHQ_URL'] %>
 <% uri = URI.parse(ENV['MONGOHQ_URL']) %>
 production:
-  sessions:
-   default:
-     database: <%= uri.path.sub('/','') %>
-     username: <%= uri.user %>
-     password: <%= uri.password %>
-     hosts:
-       - <%= uri.host %>:<%= uri.port %>
+  database: <%= uri.path.sub('/','') %>
+  username: <%= uri.user %>
+  password: <%= uri.password %>
+  hosts: <%= uri.host %>
+  port: <%= uri.port %>
 <% end %>

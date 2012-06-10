@@ -36,7 +36,7 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem "mongoid", "~> 3.0.0.rc"
+gem "mongoid"
 
 gem "jquery-ui-rails"
 
@@ -44,4 +44,8 @@ gem "twilio-rb"
 
 gem "settingslogic"
 
-gem "iron_worker"
+gem "delayed_job_mongoid"
+
+gem "heroku"
+
+gem "bson_ext"

@@ -8,5 +8,5 @@ class Itenerary
   validates_uniqueness_of :pin
   validates_numericality_of :pin
   validates_presence_of :pin
-  index({ pin: 1 }, { unique: true, name: "pin_index" })
+  index :pin, :unique => true
 end
