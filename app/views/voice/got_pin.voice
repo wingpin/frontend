@@ -2,10 +2,15 @@ res.say "Thank you. Please wait while we retrieve your status."
 leg_status = @itenerary.itenerary_legs.map do |il|
   il.flight
 end
-if leg_status.all?{|ls| ['Active', 'Scheduled', 'Landed'].include?(ls.status)}
+
+if leg_status.all?{|ls| !ls.nil? || ['Active', 'Scheduled', 'Landed'].include?(ls.status)}
   res.say "Currently, all of your flights are on time."
 else
-  res.say "Some of your flights may be delayed, cancelled, or diverted. Please call or see your travel representative for more information or continue listening for more information."
+  res.say "Some of your flights may be delayed, cancelled, diverted, or a record of it could not be retrieved. Please call or see your travel representative for more information or continue listening for more information."
+end
+
+if leg_status[0].departure_date_estimated > Time.now # in the future
+  res.say "Your first flight is estimated to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date_estimated)}, and is scheduled to depart in #{distance_of_time_in_words_to_now(leg_status[0].departure_date)}.
 end
 
 if leg_status[-1].arrival_gate
@@ -13,5 +18,7 @@ if leg_status[-1].arrival_gate
 else
   res.say "Your final flight (#{leg_status[-1].airline['Name']} flight #{leg_status[-1].flight_number}) is estimated to arrive in #{distance_of_time_in_words_to_now(leg_status[-1].arrival_date_estimated)}, terminal #{leg_status[-1].arrival_terminal}."
 end
+
+res.say "Your total estimated travel time is #{distance_of_time_in_words(leg_status[0].departure_date_estimated, leg_status[-1].arrival_date_estimated)}."
 
 res.say "Thank you for using wing pin."
