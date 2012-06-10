@@ -43,3 +43,5 @@ gem "jquery-ui-rails"
 gem "twilio-rb"
 
 gem "settingslogic"
+
+gem "iron_worker_ng"
