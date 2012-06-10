@@ -3,13 +3,13 @@
   <p>
   
   <%= il.label :airline_code, 'Airline Code' %>
-  <%= il.text_field :airline_code %>
+  <%= il.collection_select :airline_code, Airline.select_list, :airline_code, :friendly_name, {}, :class => 'chzn-select' %>
     
   <%= il.label :flight_number, 'Flight Number' %>
   <%= il.text_field :flight_number %>
   
   <%= il.label :departing_airport_code, 'Departing From' %>
-  <%= il.text_field :departing_airport_code %>
+  <%= il.collection_select :departing_airport_code, Airport.select_list.select{|a| a[:icao_code] && a[:icao_code].starts_with?('K') }, :airport_code, :friendly_name, {}, :class => 'chzn-select' %>
   
   <%= il.label :on, 'Departing on' %>
   <%= il.text_field :on, :class => 'date_field' %>

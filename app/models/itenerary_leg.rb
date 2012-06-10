@@ -15,4 +15,8 @@ class IteneraryLeg
   
   field :on, type: String
   validates_presence_of :on
+  
+  def flight
+    Flight.find(airline_code, flight_number, on, departing_airport_code)
+  end
 end

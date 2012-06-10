@@ -14,5 +14,8 @@ class VoiceController < ApplicationController
       render :pin_not_found
     end
   end
+  
+  def get_status
+  end
 
 end

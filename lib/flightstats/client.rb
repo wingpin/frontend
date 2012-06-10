@@ -11,10 +11,11 @@ module Flightstats
       @guid = service_guid
     end
     
-    def find_flight_records airline_code, flight_number, search_codeshares, date_departed_min, date_departed_max
+    def find_flight_records airline_code, flight_number, departing_airport_code, search_codeshares, date_departed_min, date_departed_max
       request({
         :service => 'FlightHistoryGetRecordsService', 
         :parameters => {
+          'info.specificationDepartures[0].airport.airportCode' => departing_airport_code,
           'info.specificationFlights[0].airline.airlineCode' => airline_code,
           'info.specificationFlights[0].flightNumber' => flight_number,
           'info.specificationFlights[0].searchCodeshares' => search_codeshares,

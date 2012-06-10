@@ -1,1 +1,12 @@
 res.say "Thank you. Please wait while we retrieve your status."
+leg_status = @itenerary.itenerary_legs.map do |il|
+  il.flight
+end
+if leg_status.all?{|ls| ['Active', 'Scheduled', 'Landed'].include?(ls.status)}
+  res.say "Currently, all of your flights are on time."
+else
+  res.say "Some of your flights may be delayed, cancelled, or diverted. Please call or see your travel representative for more information or continue listening for more information."
+end
+res.say "Your final flight (#{leg_status[-1].airline['Name']} flight #{leg_status[-1].flight_number}) is scheduled to arrive at gate #{leg_status[-1].arrival_gate}, terminal #{leg_status[-1].arrival_terminal}." if leg_status[-1].arrival_gate
+
+res.say "Thank you for using wing pin."

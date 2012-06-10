@@ -13,8 +13,10 @@
 //= require jquery
 //= require jquery.ui.all
 //= require jquery_ujs
+//= require chosen-jquery
 //= require_tree .
 
 $(function() {
   $(".date_field").datepicker({dateFormat:"yy-mm-dd"});
+  $(".chzn-select").chosen();
 });
