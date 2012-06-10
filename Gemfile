@@ -51,3 +51,7 @@ gem "heroku"
 gem "bson_ext"
 
 gem "redis"
+
+gem "chosen-rails"
+
+gem "chronic"

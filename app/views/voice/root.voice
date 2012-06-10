@@ -1,2 +1,3 @@
-res.say "Welcome to wing pin. Please enter your pin followed by the pound key."
-res.gather :action => voice_got_pin_url, :timeout => 5
+res.gather :action => voice_got_pin_url, :timeout => 10 do
+  res.say "Welcome to wing pin. Please enter your pin followed by the pound key."
+end

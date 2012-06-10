@@ -17,7 +17,14 @@ class Airport
   
   def self.select_list
     self.all.map do |a|
-      a = { :airport_code => a['AirportCode'], :friendly_name => "#{a['AirportCode']} (#{a['Name']})" }
+      a = { :icao_code => a['ICAOCode'], :airport_code => a['AirportCode'], :friendly_name => "#{a['AirportCode']} (#{a['Name']})" }
+      def a.airport_code
+        self[:airport_code]
+      end
+      def a.friendly_name
+        self[:friendly_name]
+      end
+      a
     end
   end
 end
