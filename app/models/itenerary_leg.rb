@@ -3,8 +3,16 @@ class IteneraryLeg
   embedded_in :itenerary
 
   field :airline_code, type: String
+  validates_presence_of :airline_code
+  
   field :flight_number, type: Integer
-  field :on, type: Date
-
-  validates_uniqueness_of :airline_code, :scope => [ :flight_number, :on ], :message => "Can't add more than one instance of a particular flight number per airline per day"
+  validates_presence_of :flight_number
+  validates_numericality_of :flight_number
+  validates_uniqueness_of :flight_number, :scope => [ :airline_code, :departing_airport_code, :on ], :message => "Can't add more than one instance of a particular flight number per airline per day"
+  
+  field :departing_airport_code, type: String
+  validates_presence_of :departing_airport_code
+  
+  field :on, type: String
+  validates_presence_of :on
 end
