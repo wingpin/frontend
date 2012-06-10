@@ -1,0 +1,16 @@
+<div class="itenerary_leg">
+<%= form.fields_for :itenerary_legs do |il| %>
+  <p>
+  
+  <%= il.label :airline_code, 'Airline Code' %>
+  <%= il.text_field :airline_code %>
+    
+  <%= il.label :flight_number, 'Flight Number' %>
+  <%= il.text_field :flight_number %>
+  
+  <%= il.label :on, 'Flying on' %>
+  <%= il.text_field :on, :class => 'date_field' %>
+  
+  </p>  
+<% end %>
+</div>

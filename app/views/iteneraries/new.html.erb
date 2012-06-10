@@ -1,0 +1,13 @@
+<h2>Create a New Itenerary</h2>
+<%= form_for @itenerary do |i_form| %>
+  <%= i_form.label :pin, 'PIN' %>
+  <%= i_form.text_field :pin %>
+  
+  <div id="itenerary_legs">
+    <%= render :partial => 'itenerary_leg', :locals => { :form => i_form } %>
+  </div>
+  <p>
+    <%= add_itenerary_leg_link "Add a flight", i_form %>
+  </p>
+  <%= i_form.submit 'Create Itenerary' %>
+<% end %>
