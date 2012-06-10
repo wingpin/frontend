@@ -37,3 +37,9 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 gem "mongoid", "~> 3.0.0.rc"
+
+gem "jquery-ui-rails"
+
+gem "twilio-rb"
+
+gem "settingslogic"

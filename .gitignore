@@ -16,3 +16,6 @@
 
 # Ignore some temporary files
 *~
+
+# Settings to ignore
+config/application.yml
