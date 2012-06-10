@@ -2,7 +2,7 @@ development:
   database: frontend_development
   host: localhost
 
-<% uri = URI.parse(ENV.has_key?('MONGOHQ_URL') ? ENV['MONGOHQ_URL'] : '') %>
+<% uri = URI.parse(ENV.has_key?('MONGOHQ_URL') ? ENV['MONGOHQ_URL'] : 'mongodb:///') %>
 production:
   database: <%= uri.path.sub('/','') %>
   username: <%= uri.user %>
