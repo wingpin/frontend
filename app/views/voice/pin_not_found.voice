@@ -1,0 +1,3 @@
+res.say "We're sorry, but we were unable to find an itenerary referenced by the pin you gave us. The pin you gave us was #{h(@pin)}." 
+res.say "The itenerary may be expired or you may have misentered your pin.
+res.say "Please visit www.wingpin.com to register a pin."

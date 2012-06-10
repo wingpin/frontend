@@ -4,4 +4,15 @@ class VoiceController < ApplicationController
   def root
     render :root
   end
+  
+  def got_pin
+    @pin = params[:Digits]
+    @itenerary = Itenerary.find_by(pin: @pin)
+    if @itenerary
+      render :got_pin
+    else
+      render :pin_not_found
+    end
+  end
+
 end
