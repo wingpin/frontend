@@ -4,8 +4,10 @@ development:
 
 <% uri = URI.parse(ENV.has_key?('MONGOHQ_URL') ? ENV['MONGOHQ_URL'] : 'mongodb://localhost:27017/frontend_production') %>
 production:
+<% if ENV['MONGOHQ_URL'] %>
   database: <%= uri.path.sub('/','') %>
   username: <%= uri.user %>
   password: <%= uri.password %>
   host: <%= uri.host %>
   port: <%= uri.port %>
+<% end %>
