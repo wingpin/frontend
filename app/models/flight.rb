@@ -12,7 +12,7 @@ class Flight
     flight_number
     departure_terminal
     departure_gate
-    departure_gate_estimated
+    departure_date_estimated
     departure_date
     arrival_terminal
     arrival_gate
@@ -28,7 +28,7 @@ class Flight
     @flight_number = history['FlightNumber']
     @departure_terminal = history['DepartureTerminal']
     @departure_gate = history['DepartureGate']
-    @departure_gate_estimated = ActiveSupport::TimeZone[history['DepartureAirportTimeZoneOffset'].to_i].parse(history['EstimatedGateDepartureDate'])
+    @departure_date_estimated = ActiveSupport::TimeZone[history['DepartureAirportTimeZoneOffset'].to_i].parse(history['EstimatedGateDepartureDate'])
     @departure_date = ActiveSupport::TimeZone[history['DepartureAirportTimeZoneOffset'].to_i].parse(history['DepartureDate'])
     @arrival_terminal = history['ArrivalTerminal']
     @arrival_gate = history['ArrivalGate']
