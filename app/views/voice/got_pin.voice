@@ -7,6 +7,11 @@ if leg_status.all?{|ls| ['Active', 'Scheduled', 'Landed'].include?(ls.status)}
 else
   res.say "Some of your flights may be delayed, cancelled, or diverted. Please call or see your travel representative for more information or continue listening for more information."
 end
-res.say "Your final flight (#{leg_status[-1].airline['Name']} flight #{leg_status[-1].flight_number}) is scheduled to arrive at gate #{leg_status[-1].arrival_gate}, terminal #{leg_status[-1].arrival_terminal}." if leg_status[-1].arrival_gate
+
+if leg_status[-1].arrival_gate
+  res.say "Your final flight (#{leg_status[-1].airline['Name']} flight #{leg_status[-1].flight_number}) is estimated to arrive in #{distance_of_time_in_words_to_now(leg_status[-1].gate_arrival_estimated)}, at gate #{leg_status[-1].arrival_gate}, terminal #{leg_status[-1].arrival_terminal}."
+else
+  res.say "Your final flight (#{leg_status[-1].airline['Name']} flight #{leg_status[-1].flight_number}) is estimated to arrive in #{distance_of_time_in_words_to_now(leg_status[-1].gate_arrival_estimated)}, terminal #{leg_status[-1].arrival_terminal}."
+end
 
 res.say "Thank you for using wing pin."
