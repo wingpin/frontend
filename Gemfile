@@ -49,3 +49,5 @@ gem "delayed_job_mongoid"
 gem "heroku"
 
 gem "bson_ext"
+
+gem "redis"
