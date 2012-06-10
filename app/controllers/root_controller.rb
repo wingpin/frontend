@@ -1,11 +1,12 @@
 class RootController < ApplicationController
-  respond_to :html, :voice
   
   def index
-    respond_to :html do
-      redirect_to new_itenerary_path
-    end
-    respond_to :voice do
+    respond_to do |format|
+      format.html do
+        redirect_to new_itenerary_path
+      end
+      format.voice
     end
   end
+
 end
