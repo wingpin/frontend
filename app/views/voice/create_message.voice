@@ -2,7 +2,7 @@ has_via_me = @itenerary.social_accounts.any?{|a| a.account_type == 'via.me'}
 
 if has_via_me #record some audio
   res.say "Awesome. We'll post updates to your linked accounts and now we'll record a short message to be posted on via.me along with your status. Press the pound button to end the recording. Max length is 5 minutes."
-  res.record :action => voice_post_messages_url(:itenerary_id => @itenerary.id, :access_code => @access_code), :maxLength => 5.minutes.seconds
+  res.record :action => voice_post_updates_url(:itenerary_id => @itenerary.id, :access_code => @access_code), :maxLength => 5.minutes.seconds
 else
   res.say "Awesome. We'll post updates to your linked accounts!"
   res.redirect do
