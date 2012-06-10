@@ -1,11 +1,17 @@
+<% require 'uri' %>
+<% redis_uri = URI.parse(ENV['REDISTOGO_URL']) %>
+
 defaults: &defaults
   twilio:
     account_sid: <%= ENV['TWILIO_ACCOUNT_SID'] %>
     auth_token: <%= ENV['TWILIO_AUTH_TOKEN'] %>
     app_sid: <%= ENV['TWILIO_APP_SID'] %>
-  iron:
-    project_id: <%= ENV['IRON_WORKER_PROJECT_ID'] %>
-    token: <%= ENV['IRON_WORKER_TOKEN'] %>
+  flightstats:
+    guid: <%= ENV['FLIGHTSTATS_GUID'] %>
+  redis:
+    host: <%= redis_uri.host %>
+    port: <%= redis_uri.port %>
+    password: <%= redis_uri.password %>
 
 production:
   <<: *defaults

@@ -23,6 +23,18 @@ module Flightstats
         }
       }).parsed_response
     end
+    
+    def get_all_airlines
+      request({
+          :service => 'AirlineGetAllAirlinesService'
+      }).parsed_response
+    end
+    
+    def get_all_airports
+      request({
+          :service => 'AirportGetAllAirportsService'
+      }).parsed_response
+    end
   
     private
 
@@ -32,7 +44,7 @@ module Flightstats
         "?Service=#{options[:service]}",
         :body => {
           'login.guid' => @guid
-        }.merge(options[:parameters])
+        }.merge(options[:parameters]||{})
       )
     end
     
