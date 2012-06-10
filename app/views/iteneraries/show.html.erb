@@ -4,5 +4,5 @@
 <h2>Flights</h2>
 <%@itenerary.itenerary_legs.each_with_index do |il, idx| %>
 <h3>Leg <%= idx + 1 %></h3>
-<%= il.airline_code %> : <%= il.flight_number %> - <%= il.on %>
+<%= il.airline_code %> : <%= il.flight_number %> (<%= il.departing_airport_code %>) - <%= il.on %>
 <% end %>
