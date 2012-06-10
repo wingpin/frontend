@@ -1,4 +1,4 @@
 class Settings < Settingslogic
-  source "#{Rails.root}/config/application.yml"
+  source File.exists?("#{Rails.root}/config/application.yml") ? "#{Rails.root}/config/application.yml" : "#{Rails.root}/config/application.yml.defaults"
   namespace Rails.env
 end
